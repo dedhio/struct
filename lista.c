@@ -10,7 +10,7 @@ typedef struct nostr{
 void imprime(no *le){
     no *p;
     for (p = le->prox; p != NULL; p = p->prox)
-      printf ("%d\n", p->val);
+      printf ("%d -> ", p->val);
 }
 
 void insere (int x, no *p){
@@ -24,6 +24,7 @@ void insere (int x, no *p){
 no* seleciona_impares(no *lista){
     no *lista_impar, *aux;
     lista_impar = malloc (sizeof (no));
+    lista_impar->prox == NULL;
     aux = malloc (sizeof (no));
     if(lista == NULL){
         return NULL;
@@ -34,6 +35,9 @@ no* seleciona_impares(no *lista){
             insere(aux->val, lista_impar);
         }
         aux = aux->prox;
+    }
+    if (lista_impar->prox == NULL){
+        return NULL;
     }
     return lista_impar;
 }
@@ -52,10 +56,15 @@ int main(){
     printf("\nLista original: \n");
     imprime(lista_original);
 
-    lista_impar = seleciona_impares(lista_original);
+    printf("\n\nLista impar: \n");
 
-    printf("\nLista impar: \n");
-    imprime(lista_impar);
+    if(seleciona_impares(lista_original)!=NULL){
+        lista_impar = seleciona_impares(lista_original);
+        imprime(lista_impar);
+    }else{
+        printf("A lista é nula \n");
+    }
+    
 
     return(0);
 }
