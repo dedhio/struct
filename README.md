@@ -1,0 +1,2 @@
+# struct
+Lista simplesmente encadeada
